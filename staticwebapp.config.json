@@ -1,0 +1,27 @@
+{
+  "routes": [
+    { "route": "/sitemap.xml", "serve": "/sitemap.xml", "statusCode": 200 },
+    { "route": "/robots.txt",  "serve": "/robots.txt",  "statusCode": 200 },
+    { "route": "/*", "serve": "/index.html", "statusCode": 200 }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/_next/static/*",
+      "/favicon.ico","/favicon-32x32.png","/apple-touch-icon.png",
+      "/site.webmanifest","/og-image.png",
+      "*.{png,jpg,jpeg,gif,svg,ico,webp,woff,woff2,css,js}"
+    ]
+  },
+  "responseOverrides": {
+    "404": { "rewrite": "/index.html", "statusCode": 200 }
+  },
+  "globalHeaders": {
+    "cache-control": "public, max-age=0, must-revalidate",
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "X-XSS-Protection": "1; mode=block",
+    "Referrer-Policy": "strict-origin-when-cross-origin",
+    "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+  }
+}
